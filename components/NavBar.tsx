@@ -21,8 +21,8 @@ function NavBar() {
     { label: "LinkedIn", link: "https://linkedin.com" },
   ];
   return (
-    <div className="fixed top-6 left-0 z-50 w-full px-4">
-      <nav className="container mx-auto flex items-center justify-between gap-6 rounded-3xl border border-white/10 bg-black/50 px-6 py-4 text-white backdrop-blur-2xl">
+    <div className="fixed top-5 left-0 z-50 w-full px-4">
+      <nav className="flex items-center justify-between gap-6 rounded-3xl border border-white/10 bg-black/50 px-6 py-4 text-white backdrop-blur-2xl">
         <div className="flex flex-col gap-1 text-left">
           <h1 className="text-2xl font-semibold">Minddeast</h1>
         </div>

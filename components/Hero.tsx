@@ -9,10 +9,10 @@ function Hero() {
       <div className=" flex max-w-6xl flex-col justify-center items-center gap-8 text-center">
         <BlurText
           text="MindNest Crafting Intelligent Visual Experiences"
-          className="text-4xl font-semibold leading-tight tracking-tight md:text-6xl lg:text-7xl"
+          className="text-4xl text-center font-semibold leading-tight tracking-tight md:text-6xl lg:text-7xl"
           animateBy="words"
           direction="top"
-          delay={80}
+          delay={90}
         />
 
         <p className="text-base text-white/70 md:text-lg">
