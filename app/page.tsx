@@ -2,12 +2,13 @@ import About from "@/components/About";
 import DarkVeil from "@/components/DarkVeil";
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
+import Achievements from "../components/Achievements";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen w-full bg-black overflow-hidden">
+    <main className="relative bg-black overflow-hidden">
       {/* BACKGROUND EFFECT */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-1">
         <DarkVeil />
       </div>
 
@@ -20,7 +21,12 @@ export default function Home() {
       <div className="relative z-20 flex items-center justify-center min-h-screen w-full">
         <Hero />
       </div>
-      <About />
+      <div className="relative z-20 w-full">
+        <About />
+      </div>
+      <div className="relative z-30 w-full">
+        <Achievements />
+      </div>
     </main>
   );
 }

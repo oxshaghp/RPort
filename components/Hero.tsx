@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 
 function Hero() {
   return (
-    <section className="relative z-80 flex min-h-screen w-full items-center justify-center text-center px-4 py-24 text-white">
+    <section className="relative z-80 flex min-h-[80vh] w-full items-center justify-center text-center px-4 py-24 text-white">
       <div className="flex max-w-4xl flex-col justify-center items-center text-center">
         {/* TITLE */}
         <BlurText
