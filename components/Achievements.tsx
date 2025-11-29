@@ -91,9 +91,9 @@ function Achievements() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full h-auto pl-10 mt-14">
+    <section ref={sectionRef} className="w-full h-auto px-4 md:px-10 mt-14">
       {/* First Section */}
-      <div className="flex justify-start items-center gap-5 px-5 py-10">
+      <div className="flex flex-col md:flex-row justify-center md:justify-start items-center gap-3 md:gap-5 px-5 py-10">
         <div className="flex justify-center items-center gap-4">
           <Image
             src="/icons/circaleorange.svg"
@@ -101,18 +101,20 @@ function Achievements() {
             width={20}
             height={20}
           />
-          <b className="text-3xl text-gray-300 ">Our Achievements</b>
+          <b className="text-2xl md:text-3xl text-gray-300">Our Achievements</b>
         </div>
-        <p className="text-4xl">|</p>
-        <p className="text-gray-800 text[10px]">metrics & milestones</p>
+        <p className="text-4xl hidden md:block">|</p>
+        <p className="text-gray-800 text-sm md:text-base">
+          metrics & milestones
+        </p>
       </div>
 
       {/* Br */}
       <hr className="border-[#333336] w-full border container m-auto" />
 
       {/* Second Part */}
-      <div className="flex justify-start items-center mt-12 mb-20">
-        <div className="flex justify-center items-start flex-col gap-7">
+      <div className="flex justify-center md:justify-start items-center mt-12 mb-20">
+        <div className="flex justify-center items-start flex-col gap-7 text-center md:text-left">
           <h2 className="text-3xl md:text-4xl lg:text-6xl text-white font-bold">
             Behind every statistic pulses a <br /> human story
           </h2>
