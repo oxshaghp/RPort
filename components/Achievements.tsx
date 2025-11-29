@@ -3,6 +3,14 @@ import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { gsap } from "gsap";
+import {
+  SiAdobe,
+  SiFigma,
+  SiShopify,
+  SiWebflow,
+  SiInvision,
+  SiSketch,
+} from "react-icons/si";
 
 function Achievements() {
   const projectCompleteRef = useRef<HTMLHeadingElement>(null);
@@ -284,44 +292,56 @@ function Achievements() {
             {[...Array(4)].map((_, setIndex) => (
               <div key={setIndex} className="flex items-center gap-16 px-8">
                 <div className="flex items-center gap-16">
-                  <div className="flex flex-col items-center min-w-[120px]">
-                    <div className="text-white font-bold text-xl mb-2">
-                      Adobe
+                  <div className="flex flex-col items-center min-w-[160px] gap-3 group/company">
+                    <div className="flex items-center gap-3 transition-transform duration-300 group-hover/company:scale-110">
+                      <SiAdobe className="text-5xl text-[#FF0000] drop-shadow-lg" />
+                      <div className="text-white font-bold text-xl">Adobe</div>
                     </div>
                     <p className="text-gray-400 text-sm">Design Partner</p>
                   </div>
 
-                  <div className="flex flex-col items-center min-w-[120px]">
-                    <div className="text-white font-bold text-xl mb-2">
-                      Figma
+                  <div className="flex flex-col items-center min-w-[160px] gap-3 group/company">
+                    <div className="flex items-center gap-3 transition-transform duration-300 group-hover/company:scale-110">
+                      <SiFigma className="text-5xl text-[#F24E1E] drop-shadow-lg" />
+                      <div className="text-white font-bold text-xl">Figma</div>
                     </div>
                     <p className="text-gray-400 text-sm">UI/UX Tools</p>
                   </div>
 
-                  <div className="flex flex-col items-center min-w-[120px]">
-                    <div className="text-white font-bold text-xl mb-2">
-                      Shopify
+                  <div className="flex flex-col items-center min-w-[160px] gap-3 group/company">
+                    <div className="flex items-center gap-3 transition-transform duration-300 group-hover/company:scale-110">
+                      <SiShopify className="text-5xl text-[#96BF48] drop-shadow-lg" />
+                      <div className="text-white font-bold text-xl">
+                        Shopify
+                      </div>
                     </div>
                     <p className="text-gray-400 text-sm">E-commerce</p>
                   </div>
 
-                  <div className="flex flex-col items-center min-w-[120px]">
-                    <div className="text-white font-bold text-xl mb-2">
-                      Webflow
+                  <div className="flex flex-col items-center min-w-[160px] gap-3 group/company">
+                    <div className="flex items-center gap-3 transition-transform duration-300 group-hover/company:scale-110">
+                      <SiWebflow className="text-5xl text-[#4353FF] drop-shadow-lg" />
+                      <div className="text-white font-bold text-xl">
+                        Webflow
+                      </div>
                     </div>
                     <p className="text-gray-400 text-sm">Web Platform</p>
                   </div>
 
-                  <div className="flex flex-col items-center min-w-[120px]">
-                    <div className="text-white font-bold text-xl mb-2">
-                      InVision
+                  <div className="flex flex-col items-center min-w-[160px] gap-3 group/company">
+                    <div className="flex items-center gap-3 transition-transform duration-300 group-hover/company:scale-110">
+                      <SiInvision className="text-5xl text-[#FF3366] drop-shadow-lg" />
+                      <div className="text-white font-bold text-xl">
+                        InVision
+                      </div>
                     </div>
                     <p className="text-gray-400 text-sm">Prototyping</p>
                   </div>
 
-                  <div className="flex flex-col items-center min-w-[120px]">
-                    <div className="text-white font-bold text-xl mb-2">
-                      Sketch
+                  <div className="flex flex-col items-center min-w-[160px] gap-3 group/company">
+                    <div className="flex items-center gap-3 transition-transform duration-300 group-hover/company:scale-110">
+                      <SiSketch className="text-5xl text-[#F7B500] drop-shadow-lg" />
+                      <div className="text-white font-bold text-xl">Sketch</div>
                     </div>
                     <p className="text-gray-400 text-sm">Design Tool</p>
                   </div>
