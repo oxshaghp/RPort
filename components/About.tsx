@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,7 +76,9 @@ function About() {
         {leftImages.map((src, i) => (
           <div
             key={i}
-            ref={(el) => (leftImagesRef.current[i] = el)}
+            ref={(el) => {
+              leftImagesRef.current[i] = el;
+            }}
             className="opacity-0"
           >
             <img
@@ -92,7 +93,9 @@ function About() {
         {rightImages.map((src, i) => (
           <div
             key={i}
-            ref={(el) => (rightImagesRef.current[i] = el)}
+            ref={(el) => {
+              rightImagesRef.current[i] = el;
+            }}
             className="opacity-0"
           >
             <img

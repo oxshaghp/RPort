@@ -5,13 +5,13 @@ import { Button } from "./ui/button";
 import { gsap } from "gsap";
 
 function Achievements() {
-  const projectCompleteRef = useRef(null);
-  const clientsRef = useRef(null);
-  const designAwardRef = useRef(null);
-  const campaignRef = useRef(null);
-  const yearsExcellenceRef = useRef(null);
-  const companiesTrackRef = useRef(null);
-  const sectionRef = useRef(null);
+  const projectCompleteRef = useRef<HTMLHeadingElement>(null);
+  const clientsRef = useRef<HTMLHeadingElement>(null);
+  const designAwardRef = useRef<HTMLHeadingElement>(null);
+  const campaignRef = useRef<HTMLHeadingElement>(null);
+  const yearsExcellenceRef = useRef<HTMLHeadingElement>(null);
+  const companiesTrackRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
