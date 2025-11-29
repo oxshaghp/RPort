@@ -111,7 +111,7 @@ function About() {
         />
       </div>
 
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 flex flex-col space-y-10 z-20">
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:flex flex-col space-y-10 z-20">
         {leftImages.map((src, i) => (
           <div
             key={i}
@@ -123,12 +123,12 @@ function About() {
             <img
               src={src}
               alt={`left-img-${i}`}
-              className="lg:w-[400px] lg:h-[400px] md:h-[200px] h-[150px] md:w-[200px] w-[150px] object-cover rounded-lg"
+              className="lg:w-[400px] lg:h-[400px] md:h-[200px] md:w-[200px] object-cover rounded-lg"
             />
           </div>
         ))}
       </div>
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col space-y-10 z-20">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden md:flex flex-col space-y-10 z-20">
         {rightImages.map((src, i) => (
           <div
             key={i}
@@ -140,7 +140,7 @@ function About() {
             <img
               src={src}
               alt={`right-img-${i}`}
-              className="lg:w-[400px] lg:h-[400px] md:h-[200px] h-[150px] md:w-[200px] w-[150px] object-cover rounded-lg"
+              className="lg:w-[400px] lg:h-[400px] md:h-[200px] md:w-[200px] object-cover rounded-lg"
             />
           </div>
         ))}
