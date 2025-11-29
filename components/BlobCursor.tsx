@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useCallback } from "react";
+import React, { useRef, useEffect, useCallback, useState } from "react";
 import gsap from "gsap";
 
 export interface BlobCursorProps {
@@ -50,6 +50,19 @@ export default function BlobCursor({
 }: BlobCursorProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const blobsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    // تعطيل BlobCursor في الأجهزة التي تعتمد على اللمس
+    const checkTouchDevice = () => {
+      setIsTouchDevice(
+        "ontouchstart" in window ||
+          navigator.maxTouchPoints > 0 ||
+          (navigator as any).msMaxTouchPoints > 0
+      );
+    };
+    checkTouchDevice();
+  }, []);
 
   const updateOffset = useCallback(() => {
     if (!containerRef.current) return { left: 0, top: 0 };
@@ -78,18 +91,21 @@ export default function BlobCursor({
   );
 
   useEffect(() => {
-    window.addEventListener("mousemove", handleMove);
-    window.addEventListener("touchmove", handleMove, { passive: true });
+    // تعطيل في الأجهزة التي تعتمد على اللمس
+    if (isTouchDevice) return;
 
+    window.addEventListener("mousemove", handleMove);
     const onResize = () => updateOffset();
     window.addEventListener("resize", onResize);
 
     return () => {
       window.removeEventListener("mousemove", handleMove);
-      window.removeEventListener("touchmove", handleMove);
       window.removeEventListener("resize", onResize);
     };
-  }, [handleMove, updateOffset]);
+  }, [handleMove, updateOffset, isTouchDevice]);
+
+  // لا تعرض BlobCursor في الأجهزة التي تعتمد على اللمس
+  if (isTouchDevice) return null;
 
   return (
     <div

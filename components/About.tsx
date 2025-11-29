@@ -13,40 +13,79 @@ function About() {
   const rightImages = ["/imges/imgsix.avif", "/imges/imgfourtin.avif"];
 
   useEffect(() => {
+    // تحسين الأداء: تعطيل animations في الشاشات الصغيرة
+    const isMobile = window.innerWidth < 768;
+
     leftImagesRef.current.forEach((img, i) => {
       if (!img) return;
-      gsap.fromTo(
-        img,
-        { x: -300, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: img,
-            start: "top 90%",
-            end: "top 60%",
-            scrub: true,
-          },
-        }
-      );
+      if (isMobile) {
+        // في الموبايل: animation بسيط بدون scrub
+        gsap.fromTo(
+          img,
+          { x: -100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: img,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      } else {
+        gsap.fromTo(
+          img,
+          { x: -300, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            scrollTrigger: {
+              trigger: img,
+              start: "top 90%",
+              end: "top 60%",
+              scrub: true,
+            },
+          }
+        );
+      }
     });
 
     rightImagesRef.current.forEach((img, i) => {
       if (!img) return;
-      gsap.fromTo(
-        img,
-        { x: 300, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: img,
-            start: "top 90%",
-            end: "top 60%",
-            scrub: true,
-          },
-        }
-      );
+      if (isMobile) {
+        // في الموبايل: animation بسيط بدون scrub
+        gsap.fromTo(
+          img,
+          { x: 100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: img,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      } else {
+        gsap.fromTo(
+          img,
+          { x: 300, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            scrollTrigger: {
+              trigger: img,
+              start: "top 90%",
+              end: "top 60%",
+              scrub: true,
+            },
+          }
+        );
+      }
     });
   }, []);
 
@@ -61,13 +100,13 @@ function About() {
         </h2>
       </div>
 
-      <div className="z-0 flex-shrink-0">
+      <div className="z-0 shrink-0 w-full flex items-center justify-center">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="lg:w-5xl md:w-4xl w-2xl object-cover rounded-4xl"
+          className="w-full max-w-5xl md:max-w-4xl object-cover rounded-2xl md:rounded-4xl"
           src="/video/bgvideo.mp4"
         />
       </div>
@@ -79,7 +118,7 @@ function About() {
             ref={(el) => {
               leftImagesRef.current[i] = el;
             }}
-            className="opacity-0"
+            className="opacity-0 will-change-transform"
           >
             <img
               src={src}
@@ -96,7 +135,7 @@ function About() {
             ref={(el) => {
               rightImagesRef.current[i] = el;
             }}
-            className="opacity-0"
+            className="opacity-0 will-change-transform"
           >
             <img
               src={src}
