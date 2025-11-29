@@ -17,7 +17,6 @@ function Achievements() {
     const section = sectionRef.current;
     if (!section) return;
 
-    // تعطيل animations الثقيلة في الموبايل
     const isMobile = window.innerWidth < 768;
 
     const observer = new IntersectionObserver(
@@ -70,7 +69,7 @@ function Achievements() {
 
               gsap.to(track, {
                 x: -trackWidth,
-                duration: isMobile ? 30 : 25, // أبطأ قليلاً في الموبايل لتقليل الحمل
+                duration: isMobile ? 30 : 25,
                 ease: "none",
                 repeat: -1,
               });
@@ -80,7 +79,7 @@ function Achievements() {
           }
         });
       },
-      { threshold: isMobile ? 0.1 : 0.3 } // threshold أقل في الموبايل
+      { threshold: isMobile ? 0.1 : 0.3 }
     );
 
     observer.observe(section);
@@ -91,34 +90,46 @@ function Achievements() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full h-auto px-4 md:px-10 mt-14">
-      {/* First Section */}
-      <div className="flex flex-col md:flex-row justify-center md:justify-start items-center gap-3 md:gap-5 px-5 py-10">
+    <section ref={sectionRef} className="w-full h-auto px-4 md:px-10 ">
+      {/* First Section - Improved Header */}
+      <div className="flex flex-col md:flex-row justify-center md:justify-start items-center gap-3 md:gap-5 px-5 py-12">
         <div className="flex justify-center items-center gap-4">
-          <Image
-            src="/icons/circaleorange.svg"
-            alt="Svg"
-            width={20}
-            height={20}
-          />
-          <b className="text-2xl md:text-3xl text-gray-300">Our Achievements</b>
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#5227FF] to-[#a66bff] blur-md opacity-50 rounded-full"></div>
+            <Image
+              src="/icons/circaleorange.svg"
+              alt="Svg"
+              width={24}
+              height={24}
+              className="relative"
+            />
+          </div>
+          <b className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            Our Achievements
+          </b>
         </div>
-        <p className="text-4xl hidden md:block">|</p>
-        <p className="text-gray-800 text-sm md:text-base">
-          metrics & milestones
+        <p className="text-4xl text-gray-600 hidden md:block">|</p>
+        <p className="text-gray-400 text-sm md:text-base font-medium uppercase tracking-wider">
+          Metrics & Milestones
         </p>
       </div>
 
-      {/* Br */}
-      <hr className="border-[#333336] w-full border container m-auto" />
+      {/* Br - Improved */}
+      <div className="relative w-full mb-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#5227FF]/30 to-transparent h-px"></div>
+        <hr className="border-[#333336] w-full border relative" />
+      </div>
 
-      {/* Second Part */}
+      {/* Second Part - Improved */}
       <div className="flex justify-center md:justify-start items-center mt-12 mb-20">
-        <div className="flex justify-center items-start flex-col gap-7 text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl lg:text-6xl text-white font-bold">
-            Behind every statistic pulses a <br /> human story
+        <div className="flex justify-center items-start flex-col gap-6 text-center md:text-left max-w-4xl">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl text-white font-bold leading-tight">
+            Behind every statistic pulses a{" "}
+            <span className="bg-gradient-to-r from-[#5227FF] to-[#a66bff] bg-clip-text text-transparent">
+              human story
+            </span>
           </h2>
-          <p className="text-2xl text-gray-800">
+          <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
             Transforming industries, pixel by perfect pixel
           </p>
         </div>
@@ -189,85 +200,82 @@ function Achievements() {
         </div>
       </div>
 
-      {/* Four Part - Performance Metrics */}
+      {/* Four Part - Performance Metrics - Improved */}
       <div className="mb-20">
-        <h2 className="uppercase text-gray-300 text-center mb-14 text-2xl font-semibold">
+        <h2 className="uppercase text-gray-300 text-center mb-16 text-2xl font-semibold tracking-wider">
           Performance Snapshot
         </h2>
-        <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12">
-          <div className="flex justify-center items-center flex-col p-6 min-w-[150px]">
-            <p className="text-gray-400 text-sm mb-2 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 max-w-6xl mx-auto">
+          <div className="flex justify-center items-center flex-col p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-[#5227FF]/50 transition-all duration-300 hover:bg-white/10 group">
+            <p className="text-gray-400 text-xs md:text-sm mb-3 text-center uppercase tracking-wider">
               Projects Completed
             </p>
             <h4
               ref={projectCompleteRef}
-              className="lg:text-6xl text-4xl font-bold text-white"
+              className="lg:text-6xl text-4xl font-bold text-white group-hover:bg-gradient-to-r group-hover:from-[#5227FF] group-hover:to-[#a66bff] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300"
             >
               0
             </h4>
+            <div className="mt-2 w-12 h-0.5 bg-gradient-to-r from-[#5227FF] to-[#a66bff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
 
-          <div className="hidden lg:block text-3xl text-gray-600">|</div>
-
-          <div className="flex justify-center items-center flex-col p-6 min-w-[150px]">
-            <p className="text-gray-400 text-sm mb-2 text-center">
+          <div className="flex justify-center items-center flex-col p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-[#5227FF]/50 transition-all duration-300 hover:bg-white/10 group">
+            <p className="text-gray-400 text-xs md:text-sm mb-3 text-center uppercase tracking-wider">
               Satisfied Clients
             </p>
             <h4
               ref={clientsRef}
-              className="lg:text-6xl text-4xl font-bold text-white"
+              className="lg:text-6xl text-4xl font-bold text-white group-hover:bg-gradient-to-r group-hover:from-[#5227FF] group-hover:to-[#a66bff] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300"
             >
               0
             </h4>
+            <div className="mt-2 w-12 h-0.5 bg-gradient-to-r from-[#5227FF] to-[#a66bff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
 
-          <div className="hidden lg:block text-3xl text-gray-600">|</div>
-
-          <div className="flex justify-center items-center flex-col p-6 min-w-[150px]">
-            <p className="text-gray-400 text-sm mb-2 text-center">
+          <div className="flex justify-center items-center flex-col p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-[#5227FF]/50 transition-all duration-300 hover:bg-white/10 group">
+            <p className="text-gray-400 text-xs md:text-sm mb-3 text-center uppercase tracking-wider">
               Design Awards
             </p>
             <h4
               ref={designAwardRef}
-              className="lg:text-6xl text-4xl font-bold text-white"
+              className="lg:text-6xl text-4xl font-bold text-white group-hover:bg-gradient-to-r group-hover:from-[#5227FF] group-hover:to-[#a66bff] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300"
             >
               0
             </h4>
+            <div className="mt-2 w-12 h-0.5 bg-gradient-to-r from-[#5227FF] to-[#a66bff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
 
-          <div className="hidden lg:block text-3xl text-gray-600">|</div>
-
-          <div className="flex justify-center items-center flex-col p-6 min-w-[150px]">
-            <p className="text-gray-400 text-sm mb-2 text-center">
+          <div className="flex justify-center items-center flex-col p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-[#5227FF]/50 transition-all duration-300 hover:bg-white/10 group">
+            <p className="text-gray-400 text-xs md:text-sm mb-3 text-center uppercase tracking-wider">
               Successful Campaigns
             </p>
             <h4
               ref={campaignRef}
-              className="lg:text-6xl text-4xl font-bold text-white"
+              className="lg:text-6xl text-4xl font-bold text-white group-hover:bg-gradient-to-r group-hover:from-[#5227FF] group-hover:to-[#a66bff] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300"
             >
               0
             </h4>
+            <div className="mt-2 w-12 h-0.5 bg-gradient-to-r from-[#5227FF] to-[#a66bff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
 
-          <div className="hidden lg:block text-3xl text-gray-600">|</div>
-
-          <div className="flex justify-center items-center flex-col p-6 min-w-[150px]">
-            <p className="text-gray-400 text-sm mb-2 text-center">
+          <div className="flex justify-center items-center flex-col p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-[#5227FF]/50 transition-all duration-300 hover:bg-white/10 group">
+            <p className="text-gray-400 text-xs md:text-sm mb-3 text-center uppercase tracking-wider">
               Years of Excellence
             </p>
             <h4
               ref={yearsExcellenceRef}
-              className="lg:text-6xl text-4xl font-bold text-white"
+              className="lg:text-6xl text-4xl font-bold text-white group-hover:bg-gradient-to-r group-hover:from-[#5227FF] group-hover:to-[#a66bff] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300"
             >
               0
             </h4>
+            <div className="mt-2 w-12 h-0.5 bg-gradient-to-r from-[#5227FF] to-[#a66bff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
         </div>
       </div>
 
-      {/* Companies Marquee Section */}
+      {/* Companies Marquee Section - Improved */}
       <div className="py-16 mb-20 overflow-hidden">
-        <h3 className="text-center text-2xl text-gray-300 mb-12 font-semibold">
+        <h3 className="text-center text-xl md:text-2xl text-gray-300 mb-12 font-semibold uppercase tracking-wider">
           Trusted by Industry Leaders
         </h3>
 
