@@ -17,16 +17,35 @@ function Achievements() {
     const section = sectionRef.current;
     if (!section) return;
 
+    // تعطيل animations الثقيلة في الموبايل
+    const isMobile = window.innerWidth < 768;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const counters = [
-              { ref: projectCompleteRef, endValue: 35, duration: 2 },
-              { ref: clientsRef, endValue: 43, duration: 2.5 },
-              { ref: designAwardRef, endValue: 12, duration: 2.2 },
-              { ref: campaignRef, endValue: 16, duration: 2.7 },
-              { ref: yearsExcellenceRef, endValue: 3, duration: 1.5 },
+              {
+                ref: projectCompleteRef,
+                endValue: 35,
+                duration: isMobile ? 1 : 2,
+              },
+              { ref: clientsRef, endValue: 43, duration: isMobile ? 1.2 : 2.5 },
+              {
+                ref: designAwardRef,
+                endValue: 12,
+                duration: isMobile ? 1 : 2.2,
+              },
+              {
+                ref: campaignRef,
+                endValue: 16,
+                duration: isMobile ? 1.3 : 2.7,
+              },
+              {
+                ref: yearsExcellenceRef,
+                endValue: 3,
+                duration: isMobile ? 0.8 : 1.5,
+              },
             ];
 
             counters.forEach(({ ref, endValue, duration }) => {
@@ -44,13 +63,14 @@ function Achievements() {
               }
             });
 
+            // تبسيط marquee animation في الموبايل
             if (companiesTrackRef.current) {
               const track = companiesTrackRef.current;
               const trackWidth = track.scrollWidth / 2;
 
               gsap.to(track, {
                 x: -trackWidth,
-                duration: 25,
+                duration: isMobile ? 30 : 25, // أبطأ قليلاً في الموبايل لتقليل الحمل
                 ease: "none",
                 repeat: -1,
               });
@@ -60,7 +80,7 @@ function Achievements() {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: isMobile ? 0.1 : 0.3 } // threshold أقل في الموبايل
     );
 
     observer.observe(section);

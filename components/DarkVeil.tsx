@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Renderer, Program, Mesh, Triangle, Vec2 } from "ogl";
 
 const vertex = `
@@ -94,7 +94,21 @@ export default function DarkVeil({
   resolutionScale = 1,
 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
+    // تعطيل WebGL في الموبايل لتحسين الأداء
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || "ontouchstart" in window);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // تعطيل WebGL في الموبايل
+    if (isMobile) return;
     const canvas = ref.current as HTMLCanvasElement;
     const parent = canvas.parentElement as HTMLElement;
 
@@ -164,7 +178,22 @@ export default function DarkVeil({
     scanlineFrequency,
     warpAmount,
     resolutionScale,
+    isMobile,
   ]);
+
+  // Fallback بسيط للموبايل بدلاً من WebGL
+  if (isMobile) {
+    return (
+      <div
+        className="absolute inset-0 w-full h-full block"
+        style={{
+          background:
+            "linear-gradient(to bottom, #000 0%, rgba(82, 39, 255, 0.3) 20%, rgba(177, 158, 239, 0.2) 50%, rgba(82, 39, 255, 0.3) 80%, #000 100%)",
+        }}
+      />
+    );
+  }
+
   return (
     <canvas
       ref={ref}

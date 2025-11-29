@@ -23,17 +23,38 @@ function NavBar() {
   ];
 
   useEffect(() => {
-    gsap.to(navRef.current, {
-      backdropFilter: "blur(14px)",
-      backgroundColor: "rgba(0,0,0,0.55)",
-      duration: 0.4,
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
+    // تبسيط animation في الموبايل
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+      // في الموبايل: animation بسيط بدون scrub
+      const handleScroll = () => {
+        if (navRef.current) {
+          const scrolled = window.scrollY > 50;
+          (navRef.current as HTMLElement).style.backdropFilter = scrolled
+            ? "blur(14px)"
+            : "none";
+          (navRef.current as HTMLElement).style.backgroundColor = scrolled
+            ? "rgba(0,0,0,0.55)"
+            : "rgba(0,0,0,0.2)";
+        }
+      };
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => window.removeEventListener("scroll", handleScroll);
+    } else {
+      // في الشاشات الكبيرة: استخدام ScrollTrigger
+      gsap.to(navRef.current, {
+        backdropFilter: "blur(14px)",
+        backgroundColor: "rgba(0,0,0,0.55)",
+        duration: 0.4,
+        scrollTrigger: {
+          trigger: document.documentElement,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
   }, []);
 
   return (

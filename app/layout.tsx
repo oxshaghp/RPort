@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import LenisProvider from "@/components/Lensprovider";
 import BlobCursor from "@/components/BlobCursor";
 
 const geistSans = Geist({
@@ -75,7 +74,7 @@ export default function RootLayout({
           slowDuration={0.5}
           zIndex={1}
         />
-        <LenisProvider>{children}</LenisProvider>
+        {children}
       </body>
     </html>
   );
