@@ -3,29 +3,50 @@ import DarkVeil from "@/components/DarkVeil";
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import Achievements from "../components/Achievements";
+import ServicesSection from "@/components/ServicesSection";
+import WorkSection from "@/components/WorkSection";
+import Testimonials from "@/components/Testimonials";
+import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <main className="relative bg-black overflow-hidden">
-      {/* BACKGROUND EFFECT */}
-      <div className="absolute inset-0 z-1">
+      <div className="absolute inset-0 z-0">
         <DarkVeil />
       </div>
 
-      {/* NAVBAR ALWAYS ON TOP */}
-      <div className="absolute top-0 left-0 z-50 w-full">
+      <div className="w-full">
         <NavBar />
       </div>
 
-      {/* HERO CENTRED ABOVE THE EFFECT */}
-      <div className="relative z-20 flex items-center justify-center min-h-screen w-full">
+      <section id="home" className="relative z-[10] pt-16 md:pt-24">
         <Hero />
-      </div>
-      <div className="relative z-20 w-full">
+      </section>
+
+      <section className="relative z-[10]">
         <About />
-      </div>
-      <div className="relative z-30 w-full">
+      </section>
+
+      <section id="about" className="relative z-[10]">
         <Achievements />
+      </section>
+
+      <section id="work" className="relative z-[10]">
+        <ServicesSection />
+      </section>
+
+      <section className="relative z-[10]">
+        <WorkSection />
+      </section>
+      <section id="terminations" className="relative z-[10] w-full">
+        <Testimonials />
+      </section>
+      <section id="contact" className="relative z-[10] w-full">
+        <ContactForm />
+      </section>
+      <div className="relative z-[10] w-full">
+        <Footer />
       </div>
     </main>
   );

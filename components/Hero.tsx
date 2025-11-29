@@ -4,8 +4,15 @@ import BlurText from "./BlurText";
 import { Button } from "./ui/button";
 
 function Hero() {
+  const scrollToWork = () => {
+    const el = document.getElementById("work");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="relative z-80 flex min-h-[80vh] w-full items-center justify-center text-center px-4 py-24 text-white">
+    <section className="relative flex min-h-[60vh] md:min-h-[80vh] w-full items-center justify-center text-center px-4 py-12 md:py-24 text-white">
       <div className="flex max-w-4xl flex-col justify-center items-center text-center">
         {/* TITLE */}
         <BlurText
@@ -28,6 +35,7 @@ function Hero() {
         {/* CTA Button */}
         <Button
           size="lg"
+          onClick={scrollToWork}
           className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#6f3aff] to-[#a66bff] text-white font-medium shadow-[0_0_15px_#7f46ff] hover:shadow-[0_0_25px_#a66bff] hover:scale-[1.04] transition-all"
         >
           Explore my work

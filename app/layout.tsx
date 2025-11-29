@@ -27,6 +27,24 @@ export const metadata: Metadata = {
     "motion design",
     "data analysis",
   ],
+  openGraph: {
+    title:
+      "Creative Visual Designer & AI Branding Expert | Professional Portfolio",
+    description:
+      "A modern, motion-rich portfolio website showcasing professional visual identity design, AI-powered advertising, creative editing, and data analysis services.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Creative Visual Designer & AI Branding Expert | Professional Portfolio",
+    description:
+      "A modern, motion-rich portfolio website showcasing professional visual identity design, AI-powered advertising, creative editing, and data analysis services.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

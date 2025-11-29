@@ -415,6 +415,20 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     }
   }, [playClose, animateIcon, animateColor, animateText, onMenuClose]);
 
+  const scrollToSection = useCallback(
+    (link: string) => {
+      // Extract ID from link (e.g., "#home" -> "home")
+      const id = link.startsWith("#") ? link.substring(1) : link;
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        // Close menu after scrolling
+        closeMenu();
+      }
+    },
+    [closeMenu]
+  );
+
   React.useEffect(() => {
     if (!closeOnClickAway || !open) return;
 
@@ -437,14 +451,16 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     <div
       className={`sm-scope z-40 ${
         isFixed
-          ? "fixed top-0 left-0 w-screen h-screen overflow-hidden"
+          ? "fixed top-0 left-0 w-screen h-screen overflow-hidden pointer-events-none"
           : "w-full h-full"
       }`}
     >
       <div
         className={
           (className ? className + " " : "") +
-          "staggered-menu-wrapper relative w-full h-full z-40"
+          `staggered-menu-wrapper relative w-full h-full z-40 ${
+            isFixed ? "pointer-events-none" : ""
+          }`
         }
         style={
           accentColor
@@ -539,7 +555,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         <aside
           id="staggered-menu-panel"
           ref={panelRef}
-          className="staggered-menu-panel absolute top-0 right-0 h-full bg-white flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px]"
+          className="staggered-menu-panel absolute top-0 right-0 h-full bg-white flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px] pointer-events-auto"
           style={{ WebkitBackdropFilter: "blur(12px)" }}
           aria-hidden={!open}
         >
@@ -555,16 +571,16 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                     className="sm-panel-itemWrap relative overflow-hidden leading-none"
                     key={it.label + idx}
                   >
-                    <a
-                      className="sm-panel-item relative text-black font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
-                      href={it.link}
+                    <button
+                      className="sm-panel-item relative text-black font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em] bg-transparent border-0 p-0 text-left w-full"
+                      onClick={() => scrollToSection(it.link)}
                       aria-label={it.ariaLabel}
                       data-index={idx + 1}
                     >
                       <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
                         {it.label}
                       </span>
-                    </a>
+                    </button>
                   </li>
                 ))
               ) : (

@@ -52,8 +52,8 @@ function About() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center">
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4">
+    <section className="relative w-full min-h-[60vh] md:h-screen flex items-center justify-center py-8 md:py-0">
+      <div className="absolute inset-0 flex z-50 flex-col items-center justify-center text-center px-4">
         <h1 className="lg:text-7xl md:text-6xl font-bold text-white drop-shadow-lg mb-4">
           Designed that Captivate Today
         </h1>

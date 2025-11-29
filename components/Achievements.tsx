@@ -17,12 +17,10 @@ function Achievements() {
     const section = sectionRef.current;
     if (!section) return;
 
-    // إنشاء Intersection Observer لتفعيل العد عند الوصول للقسم
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // تفعيل عدادات الأرقام
             const counters = [
               { ref: projectCompleteRef, endValue: 35, duration: 2 },
               { ref: clientsRef, endValue: 43, duration: 2.5 },
@@ -46,7 +44,6 @@ function Achievements() {
               }
             });
 
-            // تفعيل شريط الشركات المتحرك
             if (companiesTrackRef.current) {
               const track = companiesTrackRef.current;
               const trackWidth = track.scrollWidth / 2;
@@ -254,7 +251,6 @@ function Achievements() {
 
         <div className="relative overflow-hidden">
           <div ref={companiesTrackRef} className="flex whitespace-nowrap py-4">
-            {/* تكرار الشعارات لإنشاء تأثير متواصل */}
             {[...Array(4)].map((_, setIndex) => (
               <div key={setIndex} className="flex items-center gap-16 px-8">
                 <div className="flex items-center gap-16">
