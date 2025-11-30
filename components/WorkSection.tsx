@@ -4,7 +4,12 @@ import { useState, useRef, useEffect } from "react";
 import { projects } from "@/data/services";
 import gsap from "gsap";
 
-const categories = ["All", "Branding", "UI/UX", "Marketing", "Social Media"];
+const categories = [
+  "AI-Powered Advertising",
+  "Social Media Design",
+  "AI Advertising Course",
+  "Data Analysis",
+];
 
 export default function WorkSection() {
   const [active, setActive] = useState("All");

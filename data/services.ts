@@ -16,35 +16,28 @@ export type Project = {
 export const services: Service[] = [
   {
     id: 1,
-    title: "Brand Identity Design",
+    title: "AI-Powered Advertising",
     description:
       "Full visual identity systems for brands that want to look unique & memorable.",
     icon: "🎨",
   },
   {
     id: 2,
-    title: "Creative Direction",
+    title: "Data Analysis",
     description:
       "Strategic visual guidance ensuring consistent messaging & aesthetic clarity.",
     icon: "💡",
   },
   {
-    id: 3,
-    title: "UI/UX & Web Design",
-    description:
-      "Modern interfaces that convert visitors into clients using smart user psychology.",
-    icon: "💻",
-  },
-  {
     id: 4,
-    title: "AI-Powered Advertising",
+    title: "AI Advertising Course",
     description:
       "Data-driven marketing content using machine-learning & predictive audience analysis.",
     icon: "🧠",
   },
   {
     id: 5,
-    title: "Social Media & Content",
+    title: "Social Media",
     description:
       "High-impact posts, stories, and creative campaigns that ignite engagement.",
     icon: "📱",
@@ -55,35 +48,35 @@ export const projects: Project[] = [
   {
     id: 1,
     title: "NovaTech Brand Identity",
-    category: "Branding",
+    category: "AI-Powered Advertising",
     image: "/imges/bgthree.avif",
     tags: ["Logo", "Color System", "Typography"],
   },
   {
     id: 2,
     title: "Astra UI / UX Web Redesign",
-    category: "UI/UX",
+    category: "Data Analysis",
     image: "/imges/imgtoelve.avif",
     tags: ["Figma", "Wireframes", "User Flow"],
   },
   {
     id: 3,
     title: "AI Campaign — Vision Ads",
-    category: "Marketing",
+    category: "Data Analysis",
     image: "/imges/imgten.avif",
     tags: ["AI Copy", "Ad Targeting", "Analytics"],
   },
   {
     id: 4,
     title: "Luxury Cosmetics Social Pack",
-    category: "Social Media",
+    category: "Social Media Design",
     image: "/imges/porfour.avif",
     tags: ["Posts", "Reels", "Brand Tone"],
   },
   {
     id: 5,
     title: "FoodApp UI System",
-    category: "UI/UX",
+    category: "AI-Powered Advertising",
     image: "/imges/imgnine.avif",
     tags: ["App Design", "User Persona", "Prototype"],
   },

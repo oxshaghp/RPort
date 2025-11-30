@@ -23,11 +23,9 @@ function NavBar() {
   ];
 
   useEffect(() => {
-    // تبسيط animation في الموبايل
     const isMobile = window.innerWidth < 768;
 
     if (isMobile) {
-      // في الموبايل: animation بسيط بدون scrub
       const handleScroll = () => {
         if (navRef.current) {
           const scrolled = window.scrollY > 50;
@@ -42,7 +40,6 @@ function NavBar() {
       window.addEventListener("scroll", handleScroll, { passive: true });
       return () => window.removeEventListener("scroll", handleScroll);
     } else {
-      // في الشاشات الكبيرة: استخدام ScrollTrigger
       gsap.to(navRef.current, {
         backdropFilter: "blur(14px)",
         backgroundColor: "rgba(0,0,0,0.55)",
@@ -66,7 +63,7 @@ function NavBar() {
         {/* Logo */}
         <Link href="/" className="flex flex-col gap-0 text-left">
           <h1 className="text-xl font-semibold uppercase tracking-wide">
-            MindNest
+            Mindnest
           </h1>
         </Link>
 
